@@ -35,3 +35,4 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .build*
+yarn.lock
