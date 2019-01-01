@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Nag
+=======
+ * # Semantic UI 2.4.2 - Nag
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,7 +14,7 @@
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window

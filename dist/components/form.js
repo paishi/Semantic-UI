@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Form Validation
+=======
+ * # Semantic UI 2.4.2 - Form Validation
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,7 +14,7 @@
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -435,16 +439,16 @@ $.fn.form = function(parameters) {
             var
               ruleName      = module.get.ruleName(rule),
               ancillary     = module.get.ancillaryValue(rule),
-              prompt        = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+              $field        = module.get.field(field.identifier),
+              value         = $field.val(),
+              prompt        = $.isFunction(rule.prompt)
+                ? rule.prompt(value)
+                : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
               requiresValue = (prompt.search('{value}') !== -1),
               requiresName  = (prompt.search('{name}') !== -1),
               $label,
-              $field,
               name
             ;
-            if(requiresName || requiresValue) {
-              $field = module.get.field(field.identifier);
-            }
             if(requiresValue) {
               prompt = prompt.replace('{value}', $field.val());
             }

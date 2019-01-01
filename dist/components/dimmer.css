@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Dimmer
+=======
+ * # Semantic UI 2.4.2 - Dimmer
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -116,6 +120,21 @@
 
 
 /*--------------
+<<<<<<< HEAD
+=======
+    Legacy
+---------------*/
+
+
+/* Animating / Active / Visible */
+.dimmed.dimmable > .ui.animating.legacy.dimmer,
+.dimmed.dimmable > .ui.visible.legacy.dimmer,
+.ui.active.legacy.dimmer {
+  display: block;
+}
+
+/*--------------
+>>>>>>> Semantic/master
     Alignment
 ---------------*/
 

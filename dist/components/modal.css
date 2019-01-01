@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Modal
+=======
+ * # Semantic UI 2.4.2 - Modal
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14,6 +18,7 @@
 *******************************/
 
 .ui.modal {
+  position: absolute;
   display: none;
   z-index: 1001;
   text-align: left;
@@ -320,6 +325,19 @@
   color: rgba(0, 0, 0, 0.85);
 }
 
+/* Resort to margin positioning if legacy */
+.ui.legacy.modal,
+.ui.legacy.page.dimmer > .ui.modal {
+  top: 50%;
+  left: 50%;
+}
+.ui.legacy.page.dimmer > .ui.scrolling.modal,
+.ui.page.dimmer > .ui.scrolling.legacy.modal,
+.ui.top.aligned.legacy.page.dimmer > .ui.modal,
+.ui.top.aligned.dimmer > .ui.legacy.modal {
+  top: auto;
+}
+
 /* Tablet and Mobile */
 @media only screen and (max-width: 991px) {
   .ui.basic.modal > .close {
@@ -356,6 +374,24 @@
 .modals.dimmer[class*="top aligned"] .modal {
   margin: 5vh auto;
 }
+<<<<<<< HEAD
+=======
+@media only screen and (max-width: 767px) {
+  .modals.dimmer[class*="top aligned"] .modal {
+    margin: 1rem auto;
+  }
+}
+
+/* Legacy Top Aligned */
+.legacy.modals.dimmer[class*="top aligned"] {
+  padding-top: 5vh;
+}
+@media only screen and (max-width: 767px) {
+  .legacy.modals.dimmer[class*="top aligned"] {
+    padding-top: 1rem;
+  }
+}
+>>>>>>> Semantic/master
 
 /*--------------
     Scrolling
@@ -379,7 +415,11 @@
   position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
+<<<<<<< HEAD
   margin: 1rem auto !important;
+=======
+  margin: 1rem auto;
+>>>>>>> Semantic/master
 }
 
 /* Undetached Scrolling */
@@ -398,7 +438,7 @@
 
 /* Scrolling Content */
 .ui.modal .scrolling.content {
-  max-height: calc(70vh);
+  max-height: calc(80vh - 10em);
   overflow: auto;
 }
 
@@ -408,11 +448,11 @@
 
 .ui.fullscreen.modal {
   width: 95% !important;
+<<<<<<< HEAD
   left: 0em !important;
+=======
+>>>>>>> Semantic/master
   margin: 1em auto;
-}
-.ui.fullscreen.scrolling.modal {
-  left: 0em !important;
 }
 .ui.fullscreen.modal > .header {
   padding-right: 2.25rem;

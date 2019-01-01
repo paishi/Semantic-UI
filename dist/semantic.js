@@ -1,5 +1,9 @@
  /*
+<<<<<<< HEAD
  * # Semantic UI - 2.3.0
+=======
+ * # Semantic UI - 2.4.2
+>>>>>>> Semantic/master
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -9,7 +13,11 @@
  *
  */
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Site
+=======
+ * # Semantic UI 2.4.2 - Site
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -497,7 +505,11 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Form Validation
+=======
+ * # Semantic UI 2.4.2 - Form Validation
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -508,7 +520,7 @@ $.extend($.expr[ ":" ], {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -933,16 +945,16 @@ $.fn.form = function(parameters) {
             var
               ruleName      = module.get.ruleName(rule),
               ancillary     = module.get.ancillaryValue(rule),
-              prompt        = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+              $field        = module.get.field(field.identifier),
+              value         = $field.val(),
+              prompt        = $.isFunction(rule.prompt)
+                ? rule.prompt(value)
+                : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
               requiresValue = (prompt.search('{value}') !== -1),
               requiresName  = (prompt.search('{name}') !== -1),
               $label,
-              $field,
               name
             ;
-            if(requiresName || requiresValue) {
-              $field = module.get.field(field.identifier);
-            }
             if(requiresValue) {
               prompt = prompt.replace('{value}', $field.val());
             }
@@ -2204,7 +2216,11 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Accordion
+=======
+ * # Semantic UI 2.4.2 - Accordion
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2215,7 +2231,7 @@ $.fn.form.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -2818,7 +2834,11 @@ $.extend( $.easing, {
 
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Checkbox
+=======
+ * # Semantic UI 2.4.2 - Checkbox
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2829,7 +2849,7 @@ $.extend( $.easing, {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -3650,7 +3670,11 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Dimmer
+=======
+ * # Semantic UI 2.4.2 - Dimmer
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -3661,7 +3685,7 @@ $.fn.checkbox.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -3734,7 +3758,6 @@ $.fn.dimmer = function(parameters) {
             else {
               $dimmer = module.create();
             }
-            module.set.variation();
           }
         },
 
@@ -3808,7 +3831,7 @@ $.fn.dimmer = function(parameters) {
               module.hide();
               event.stopImmediatePropagation();
             }
-          }
+          },
         },
 
         addContent: function(element) {
@@ -3841,6 +3864,7 @@ $.fn.dimmer = function(parameters) {
             : function(){}
           ;
           module.debug('Showing dimmer', $dimmer, settings);
+          module.set.variation();
           if( (!module.is.dimmed() || module.is.animating()) && module.is.enabled() ) {
             module.animate.show(callback);
             settings.onShow.call(element);
@@ -3884,12 +3908,26 @@ $.fn.dimmer = function(parameters) {
               : function(){}
             ;
             if(settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
+              if(settings.useFlex) {
+                module.debug('Using flex dimmer');
+                module.remove.legacy();
+              }
+              else {
+                module.debug('Using legacy non-flex dimmer');
+                module.set.legacy();
+              }
               if(settings.opacity !== 'auto') {
                 module.set.opacity();
               }
               $dimmer
                 .transition({
+<<<<<<< HEAD
                   displayType : 'flex',
+=======
+                  displayType : settings.useFlex
+                    ? 'flex'
+                    : 'block',
+>>>>>>> Semantic/master
                   animation   : settings.transition + ' in',
                   queue       : false,
                   duration    : module.get.duration(),
@@ -3934,7 +3972,13 @@ $.fn.dimmer = function(parameters) {
               module.verbose('Hiding dimmer with css');
               $dimmer
                 .transition({
+<<<<<<< HEAD
                   displayType : 'flex',
+=======
+                  displayType : settings.useFlex
+                    ? 'flex'
+                    : 'block',
+>>>>>>> Semantic/master
                   animation   : settings.transition + ' out',
                   queue       : false,
                   duration    : module.get.duration(),
@@ -3943,6 +3987,7 @@ $.fn.dimmer = function(parameters) {
                     module.remove.dimmed();
                   },
                   onComplete  : function() {
+                    module.remove.variation();
                     module.remove.active();
                     callback();
                   }
@@ -4056,6 +4101,9 @@ $.fn.dimmer = function(parameters) {
             module.debug('Setting opacity to', opacity);
             $dimmer.css('background-color', color);
           },
+          legacy: function() {
+            $dimmer.addClass(className.legacy);
+          },
           active: function() {
             $dimmer.addClass(className.active);
           },
@@ -4084,6 +4132,9 @@ $.fn.dimmer = function(parameters) {
             $dimmer
               .removeClass(className.active)
             ;
+          },
+          legacy: function() {
+            $dimmer.removeClass(className.legacy);
           },
           dimmed: function() {
             $dimmable.removeClass(className.dimmed);
@@ -4298,6 +4349,9 @@ $.fn.dimmer.settings = {
   verbose     : false,
   performance : true,
 
+  // whether should use flex layout
+  useFlex     : true,
+
   // name to distinguish between multiple dimmers in context
   dimmerName  : false,
 
@@ -4341,6 +4395,7 @@ $.fn.dimmer.settings = {
     dimmer     : 'dimmer',
     disabled   : 'disabled',
     hide       : 'hide',
+    legacy     : 'legacy',
     pageDimmer : 'page',
     show       : 'show'
   },
@@ -4361,7 +4416,11 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Dropdown
+=======
+ * # Semantic UI 2.4.2 - Dropdown
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -4372,7 +4431,7 @@ $.fn.dimmer.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -4967,7 +5026,6 @@ $.fn.dropdown = function(parameters) {
             else {
               if(settings.on == 'click') {
                 $module
-                  .on('click' + eventNamespace, selector.icon, module.event.icon.click)
                   .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
@@ -4983,6 +5041,7 @@ $.fn.dropdown = function(parameters) {
                 ;
               }
               $module
+                .on('click' + eventNamespace, selector.icon, module.event.icon.click)
                 .on('mousedown' + eventNamespace, module.event.mousedown)
                 .on('mouseup'   + eventNamespace, module.event.mouseup)
                 .on('focus'     + eventNamespace, module.event.focus)
@@ -5116,10 +5175,19 @@ $.fn.dropdown = function(parameters) {
                 callback();
               },
               onSuccess : function(response) {
-                module.remove.message();
-                module.setup.menu({
-                  values: response[fields.remoteValues]
-                });
+                var
+                  values          = response[fields.remoteValues],
+                  hasRemoteValues = ($.isArray(values) && values.length > 0)
+                ;
+                if(hasRemoteValues) {
+                  module.remove.message();
+                  module.setup.menu({
+                    values: response[fields.remoteValues]
+                  });
+                }
+                else {
+                  module.add.message(message.noResults);
+                }
                 callback();
               }
             }
@@ -5372,7 +5440,12 @@ $.fn.dropdown = function(parameters) {
           },
           icon: {
             click: function(event) {
-              module.toggle();
+              if($icon.hasClass(className.clear)) {
+                module.clear();
+              }
+              else if (module.can.click()) {
+                module.toggle();
+              }
             }
           },
           text: {
@@ -5979,7 +6052,7 @@ $.fn.dropdown = function(parameters) {
               : text
             ;
             if( module.can.activate( $(element) ) ) {
-              module.set.value(value, $(element));
+              module.set.value(value, text, $(element));
               if(module.is.multiple() && !module.is.allFiltered()) {
                 return;
               }
@@ -5999,7 +6072,7 @@ $.fn.dropdown = function(parameters) {
           },
 
           hide: function(text, value, element) {
-            module.set.value(value, text);
+            module.set.value(value, text, $(element));
             module.hideAndClear();
           }
 
@@ -6645,7 +6718,7 @@ $.fn.dropdown = function(parameters) {
             var
               length = module.get.query().length
             ;
-            $search.val( text.substr(0 , length));
+            $search.val( text.substr(0, length));
           },
           scrollPosition: function($item, forceScroll) {
             var
@@ -6834,6 +6907,15 @@ $.fn.dropdown = function(parameters) {
                 $module.data(metadata.value, stringValue);
               }
             }
+            if(module.is.single() && settings.clearable) {
+              // treat undefined or '' as empty
+              if(!escapedValue) {
+                module.remove.clearable();
+              }
+              else {
+                module.set.clearable();
+              }
+            }
             if(settings.fireOnInit === false && module.is.initialLoad()) {
               module.verbose('No callback on initial load', settings.onChange);
             }
@@ -6929,7 +7011,10 @@ $.fn.dropdown = function(parameters) {
                 }
               })
             ;
-          }
+          },
+          clearable: function() {
+            $icon.addClass(className.clear);
+          },
         },
 
         add: {
@@ -6941,6 +7026,9 @@ $.fn.dropdown = function(parameters) {
               escapedValue = module.escape.value(value),
               $label
             ;
+            if(settings.ignoreCase) {
+              escapedValue = escapedValue.toLowerCase();
+            }
             $label =  $('<a />')
               .addClass(className.label)
               .attr('data-' + metadata.value, escapedValue)
@@ -6948,7 +7036,11 @@ $.fn.dropdown = function(parameters) {
             ;
             $label = settings.onLabelCreate.call($label, escapedValue, text);
 
+<<<<<<< HEAD
             if(module.has.value(value)) {
+=======
+            if(module.has.label(value)) {
+>>>>>>> Semantic/master
               module.debug('User selection already exists, skipping', escapedValue);
               return;
             }
@@ -7124,7 +7216,7 @@ $.fn.dropdown = function(parameters) {
             }
             module.set.value(newValue, addedValue, addedText, $selectedItem);
             module.check.maxSelections();
-          }
+          },
         },
 
         remove: {
@@ -7349,6 +7441,9 @@ $.fn.dropdown = function(parameters) {
                 .removeAttr('tabindex')
               ;
             }
+          },
+          clearable: function() {
+            $icon.removeClass(className.clear);
           }
         },
 
@@ -7405,6 +7500,9 @@ $.fn.dropdown = function(parameters) {
               escapedValue = module.escape.value(value),
               $labels      = $module.find(selector.label)
             ;
+            if(settings.ignoreCase) {
+              escapedValue = escapedValue.toLowerCase();
+            }
             return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) +'"]').length > 0);
           },
           maxSelections: function() {
@@ -8033,6 +8131,8 @@ $.fn.dropdown.settings = {
 
   values                 : false,      // specify values to use for dropdown
 
+  clearable              : false,      // whether the value of the dropdown can be cleared
+
   apiSettings            : false,
   selectOnKeydown        : true,       // Whether selection should occur automatically when keyboard shortcuts used
   minCharacters          : 0,          // Minimum characters required to trigger API call
@@ -8185,6 +8285,7 @@ $.fn.dropdown.settings = {
     active      : 'active',
     addition    : 'addition',
     animating   : 'animating',
+    clear       : 'clear',
     disabled    : 'disabled',
     empty       : 'empty',
     dropdown    : 'ui dropdown',
@@ -8251,7 +8352,7 @@ $.fn.dropdown.settings.templates = {
           ? 'disabled '
           : ''
       ;
-      html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>'
+      html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
       html +=   option[fields.name];
       html += '</div>';
     });
@@ -8279,7 +8380,11 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Embed
+=======
+ * # Semantic UI 2.4.2 - Embed
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8461,6 +8566,7 @@ $.fn.embed = function(parameters) {
         // clears embed
         reset: function() {
           module.debug('Clearing embed and showing placeholder');
+          module.remove.data();
           module.remove.active();
           module.remove.embed();
           module.showPlaceholder();
@@ -8580,6 +8686,15 @@ $.fn.embed = function(parameters) {
         },
 
         remove: {
+          data: function() {
+            $module
+              .removeData(metadata.id)
+              .removeData(metadata.icon)
+              .removeData(metadata.placeholder)
+              .removeData(metadata.source)
+              .removeData(metadata.url)
+            ;
+          },
           active: function() {
             $module.removeClass(className.active);
           },
@@ -8976,7 +9091,11 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Modal
+=======
+ * # Semantic UI 2.4.2 - Modal
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8987,7 +9106,7 @@ $.fn.embed.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -9087,8 +9206,12 @@ $.fn.modal = function(parameters) {
                 debug      : settings.debug,
                 variation  : settings.centered
                   ? false
+<<<<<<< HEAD
                   : 'top aligned'
                 ,
+=======
+                  : 'top aligned',
+>>>>>>> Semantic/master
                 dimmerName : 'modals'
               },
               dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
@@ -9109,7 +9232,7 @@ $.fn.modal = function(parameters) {
             $dimmer = $dimmable.dimmer('get dimmer');
           },
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2,8);
+            id = (Math.random().toString(16) + '000000000').substr(2, 8);
             elementEventNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
           }
@@ -9144,6 +9267,9 @@ $.fn.modal = function(parameters) {
         refresh: function() {
           module.remove.scrolling();
           module.cacheSizes();
+          if(!module.can.useFlex()) {
+            module.set.modalOffset();
+          }
           module.set.screenHeight();
           module.set.type();
         },
@@ -9184,12 +9310,22 @@ $.fn.modal = function(parameters) {
             $window
               .on('resize' + elementEventNamespace, module.event.resize)
             ;
+          },
+          scrollLock: function() {
+            // touch events default to passive, due to changes in chrome to optimize mobile perf
+            $dimmable.get(0).addEventListener('touchmove', module.event.preventScroll, { passive: false });
+          }
+        },
+
+        unbind: {
+          scrollLock: function() {
+            $dimmable.get(0).removeEventListener('touchmove', module.event.preventScroll, { passive: false });
           }
         },
 
         get: {
           id: function() {
-            return (Math.random().toString(16) + '000000000').substr(2,8);
+            return (Math.random().toString(16) + '000000000').substr(2, 8);
           }
         },
 
@@ -9203,6 +9339,9 @@ $.fn.modal = function(parameters) {
             module.hide(function() {
               ignoreRepeatedEvents = false;
             });
+          },
+          preventScroll: function(event) {
+            event.preventDefault();
           },
           deny: function() {
             if(ignoreRepeatedEvents || settings.onDeny.call(element, $(this)) === false) {
@@ -9281,6 +9420,8 @@ $.fn.modal = function(parameters) {
           ;
           module.refreshModals();
           module.set.dimmerSettings();
+          module.set.dimmerStyles();
+
           module.showModal(callback);
         },
 
@@ -9299,9 +9440,19 @@ $.fn.modal = function(parameters) {
             : function(){}
           ;
           if( module.is.animating() || !module.is.active() ) {
-
             module.showDimmer();
             module.cacheSizes();
+<<<<<<< HEAD
+=======
+            if(module.can.useFlex()) {
+              module.remove.legacy();
+            }
+            else {
+              module.set.legacy();
+              module.set.modalOffset();
+              module.debug('Using non-flex legacy modal positioning.');
+            }
+>>>>>>> Semantic/master
             module.set.screenHeight();
             module.set.type();
             module.set.clickaway();
@@ -9379,6 +9530,7 @@ $.fn.modal = function(parameters) {
                   },
                   onComplete : function() {
                     settings.onHidden.call(element);
+                    module.remove.dimmerStyles();
                     module.restore.focus();
                     callback();
                   }
@@ -9403,6 +9555,7 @@ $.fn.modal = function(parameters) {
 
         hideDimmer: function() {
           if( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
+            module.unbind.scrollLock();
             $dimmable.dimmer('hide', function() {
               module.remove.clickaway();
               module.remove.screenHeight();
@@ -9490,10 +9643,20 @@ $.fn.modal = function(parameters) {
           active: function() {
             $module.removeClass(className.active);
           },
+          legacy: function() {
+            $module.removeClass(className.legacy);
+          },
           clickaway: function() {
             $dimmer
               .off('click' + elementEventNamespace)
             ;
+<<<<<<< HEAD
+=======
+          },
+          dimmerStyles: function() {
+            $dimmer.removeClass(className.inverted);
+            $dimmable.removeClass(className.blurring);
+>>>>>>> Semantic/master
           },
           bodyStyle: function() {
             if($body.attr('style') === '') {
@@ -9523,11 +9686,13 @@ $.fn.modal = function(parameters) {
           $module.addClass(className.loading);
           var
             scrollHeight = $module.prop('scrollHeight'),
+            modalWidth   = $module.outerWidth(),
             modalHeight  = $module.outerHeight()
           ;
           if(module.cache === undefined || modalHeight !== 0) {
             module.cache = {
               pageHeight    : $(document).outerHeight(),
+              width         : modalWidth,
               height        : modalHeight + settings.offset,
               scrollHeight  : scrollHeight + settings.offset,
               contextHeight : (settings.context == 'body')
@@ -9541,6 +9706,12 @@ $.fn.modal = function(parameters) {
         },
 
         can: {
+          useFlex: function() {
+            return (settings.useFlex == 'auto')
+              ? settings.detachable && !module.is.ie()
+              : settings.useFlex
+            ;
+          },
           fit: function() {
             var
               contextHeight  = module.cache.contextHeight,
@@ -9562,6 +9733,13 @@ $.fn.modal = function(parameters) {
           active: function() {
             return $module.hasClass(className.active);
           },
+          ie: function() {
+            var
+              isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
+              isIE   = ('ActiveXObject' in window)
+            ;
+            return (isIE11 || isIE);
+          },
           animating: function() {
             return $module.transition('is supported')
               ? $module.transition('is animating')
@@ -9573,7 +9751,7 @@ $.fn.modal = function(parameters) {
           },
           modernBrowser: function() {
             // appName for IE11 reports 'Netscape' can no longer use
-            return !(window.ActiveXObject || "ActiveXObject" in window);
+            return !(window.ActiveXObject || 'ActiveXObject' in window);
           }
         },
 
@@ -9605,10 +9783,17 @@ $.fn.modal = function(parameters) {
                 debug      : settings.debug,
                 dimmerName : 'modals',
                 closable   : 'auto',
+<<<<<<< HEAD
                 variation  : settings.centered
                   ? false
                   : 'top aligned'
                 ,
+=======
+                useFlex    : module.can.useFlex(),
+                variation  : settings.centered
+                  ? false
+                  : 'top aligned',
+>>>>>>> Semantic/master
                 duration   : {
                   show     : settings.duration,
                   hide     : settings.duration
@@ -9621,6 +9806,11 @@ $.fn.modal = function(parameters) {
                 ? dimmerSettings.variation + ' inverted'
                 : 'inverted'
               ;
+            }
+            $context.dimmer('setting', dimmerSettings);
+          },
+          dimmerStyles: function() {
+            if(settings.inverted) {
               $dimmer.addClass(className.inverted);
             }
             else {
@@ -9632,7 +9822,21 @@ $.fn.modal = function(parameters) {
             else {
               $dimmable.removeClass(className.blurring);
             }
-            $context.dimmer('setting', dimmerSettings);
+          },
+          modalOffset: function() {
+            var
+              width = module.cache.width,
+              height = module.cache.height
+            ;
+            $module
+              .css({
+                marginTop: (settings.centered && module.can.fit())
+                  ? -(height / 2)
+                  : 0,
+                marginLeft: -(width / 2)
+              })
+            ;
+            module.verbose('Setting modal offset for legacy mode');
           },
           screenHeight: function() {
             if( module.can.fit() ) {
@@ -9651,12 +9855,17 @@ $.fn.modal = function(parameters) {
           scrolling: function() {
             $dimmable.addClass(className.scrolling);
             $module.addClass(className.scrolling);
+            module.unbind.scrollLock();
+          },
+          legacy: function() {
+            $module.addClass(className.legacy);
           },
           type: function() {
             if(module.can.fit()) {
               module.verbose('Modal fits on screen');
               if(!module.others.active() && !module.others.animating()) {
                 module.remove.scrolling();
+                module.bind.scrollLock();
               }
             }
             else {
@@ -9857,6 +10066,9 @@ $.fn.modal.settings = {
   name           : 'Modal',
   namespace      : 'modal',
 
+  useFlex        : 'auto',
+  offset         : 0,
+
   silent         : false,
   debug          : false,
   verbose        : false,
@@ -9886,7 +10098,6 @@ $.fn.modal.settings = {
 
   queue      : false,
   duration   : 500,
-  offset     : 0,
   transition : 'scale',
 
   // padding with edge of page
@@ -9926,6 +10137,7 @@ $.fn.modal.settings = {
     animating  : 'animating',
     blurring   : 'blurring',
     inverted   : 'inverted',
+    legacy     : 'legacy',
     loading    : 'loading',
     scrolling  : 'scrolling',
     undetached : 'undetached'
@@ -9936,7 +10148,11 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Nag
+=======
+ * # Semantic UI 2.4.2 - Nag
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9947,7 +10163,7 @@ $.fn.modal.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -10444,7 +10660,11 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Popup
+=======
+ * # Semantic UI 2.4.2 - Popup
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10455,7 +10675,7 @@ $.extend( $.easing, {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -11457,11 +11677,11 @@ $.fn.popup = function(parameters) {
             if(settings.hideOnScroll === true || (settings.hideOnScroll == 'auto' && settings.on != 'click')) {
               module.bind.closeOnScroll();
             }
-            if(settings.on == 'hover' && openedWithTouch) {
-              module.bind.touchClose();
-            }
-            if(settings.on == 'click' && settings.closable) {
+            if(module.is.closable()) {
               module.bind.clickaway();
+            }
+            else if(settings.on == 'hover' && openedWithTouch) {
+              module.bind.touchClose();
             }
           },
           closeOnScroll: function() {
@@ -11518,10 +11738,23 @@ $.fn.popup = function(parameters) {
         should: {
           centerArrow: function(calculations) {
             return !module.is.basic() && calculations.target.width <= (settings.arrowPixelsFromEdge * 2);
+<<<<<<< HEAD
           }
+=======
+          },
+>>>>>>> Semantic/master
         },
 
         is: {
+          closable: function() {
+            if(settings.closable == 'auto') {
+              if(settings.on == 'hover') {
+                return false;
+              }
+              return true;
+            }
+            return settings.closable;
+          },
           offstage: function(distanceFromBoundary, position) {
             var
               offstage = []
@@ -11968,7 +12201,11 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Progress
+=======
+ * # Semantic UI 2.4.2 - Progress
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11979,7 +12216,7 @@ $.fn.popup.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -12900,7 +13137,11 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Rating
+=======
+ * # Semantic UI 2.4.2 - Rating
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12911,7 +13152,7 @@ $.fn.progress.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -13409,7 +13650,11 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Search
+=======
+ * # Semantic UI 2.4.2 - Search
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -13420,7 +13665,7 @@ $.fn.rating.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -13747,7 +13992,7 @@ $.fn.search = function(parameters) {
               apiSettings = {
                 debug             : settings.debug,
                 on                : false,
-                cache             : true,
+                cache             : settings.cache,
                 action            : 'search',
                 urlData           : {
                   query : searchTerm
@@ -14006,9 +14251,10 @@ $.fn.search = function(parameters) {
               addResult = function(array, result) {
                 var
                   notResult      = ($.inArray(result, results) == -1),
-                  notFuzzyResult = ($.inArray(result, fuzzyResults) == -1)
+                  notFuzzyResult = ($.inArray(result, fuzzyResults) == -1),
+                  notExactResults = ($.inArray(result, exactResults) == -1)
                 ;
-                if(notResult && notFuzzyResult) {
+                if(notResult && notFuzzyResult && notExactResults) {
                   array.push(result);
                 }
               }
@@ -14914,7 +15160,11 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Shape
+=======
+ * # Semantic UI 2.4.2 - Shape
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14925,7 +15175,7 @@ $.fn.search.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -15836,7 +16086,11 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Sidebar
+=======
+ * # Semantic UI 2.4.2 - Sidebar
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15847,7 +16101,7 @@ $.fn.shape.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -16870,7 +17124,11 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Sticky
+=======
+ * # Semantic UI 2.4.2 - Sticky
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16881,7 +17139,7 @@ $.fn.sidebar.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -17830,7 +18088,11 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Tab
+=======
+ * # Semantic UI 2.4.2 - Tab
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17841,7 +18103,7 @@ $.fn.sticky.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -18783,7 +19045,11 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Transition
+=======
+ * # Semantic UI 2.4.2 - Transition
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18794,7 +19060,7 @@ $.fn.tab.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -19879,7 +20145,11 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - API
+=======
+ * # Semantic UI 2.4.2 - API
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19890,7 +20160,7 @@ $.fn.transition.settings = {
 
 ;(function ($, window, document, undefined) {
 
-"use strict";
+'use strict';
 
 var
   window = (typeof window != 'undefined' && window.Math == Math)
@@ -21047,7 +21317,11 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - State
+=======
+ * # Semantic UI 2.4.2 - Visibility
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21058,6 +21332,7 @@ $.api.settings = {
 
 ;(function ($, window, document, undefined) {
 
+<<<<<<< HEAD
 "use strict";
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -21768,6 +22043,9 @@ $.fn.state.settings = {
 ;(function ($, window, document, undefined) {
 
 "use strict";
+=======
+'use strict';
+>>>>>>> Semantic/master
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -22690,7 +22968,7 @@ $.fn.visibility = function(parameters) {
             element.percentagePassed = 0;
 
             // meta calculations
-            element.onScreen  = (element.topVisible && !element.bottomPassed);
+            element.onScreen  = ((element.topVisible || element.passing) && !element.bottomPassed);
             element.passing   = (element.topPassed && !element.bottomPassed);
             element.offScreen = (!element.onScreen);
 

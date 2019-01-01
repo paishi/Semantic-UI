@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * # Semantic UI 2.3.0 - Embed
+=======
+ * # Semantic UI 2.4.2 - Embed
+>>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -181,6 +185,7 @@ $.fn.embed = function(parameters) {
         // clears embed
         reset: function() {
           module.debug('Clearing embed and showing placeholder');
+          module.remove.data();
           module.remove.active();
           module.remove.embed();
           module.showPlaceholder();
@@ -300,6 +305,15 @@ $.fn.embed = function(parameters) {
         },
 
         remove: {
+          data: function() {
+            $module
+              .removeData(metadata.id)
+              .removeData(metadata.icon)
+              .removeData(metadata.placeholder)
+              .removeData(metadata.source)
+              .removeData(metadata.url)
+            ;
+          },
           active: function() {
             $module.removeClass(className.active);
           },

@@ -113,6 +113,29 @@
            Variations
 *******************************/
 
+
+/*--------------
+    Legacy
+---------------*/
+
+/* Animating / Active / Visible */
+.dimmed.dimmable > .ui.animating.legacy.dimmer,
+.dimmed.dimmable > .ui.visible.legacy.dimmer,
+.ui.active.legacy.dimmer {
+  display: block;
+}
+
+/*--------------
+    Alignment
+---------------*/
+
+.ui[class*="top aligned"].dimmer {
+  justify-content: flex-start;
+}
+.ui[class*="bottom aligned"].dimmer {
+  justify-content: flex-end;
+}
+
 /*--------------
     Alignment
 ---------------*/
