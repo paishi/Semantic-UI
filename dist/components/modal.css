@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Modal
-=======
  * # Semantic UI 2.4.2 - Modal
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -374,8 +370,6 @@
 .modals.dimmer[class*="top aligned"] .modal {
   margin: 5vh auto;
 }
-<<<<<<< HEAD
-=======
 @media only screen and (max-width: 767px) {
   .modals.dimmer[class*="top aligned"] .modal {
     margin: 1rem auto;
@@ -391,7 +385,6 @@
     padding-top: 1rem;
   }
 }
->>>>>>> Semantic/master
 
 /*--------------
     Scrolling
@@ -415,11 +408,7 @@
   position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
-<<<<<<< HEAD
-  margin: 1rem auto !important;
-=======
   margin: 1rem auto;
->>>>>>> Semantic/master
 }
 
 /* Undetached Scrolling */
@@ -448,10 +437,6 @@
 
 .ui.fullscreen.modal {
   width: 95% !important;
-<<<<<<< HEAD
-  left: 0em !important;
-=======
->>>>>>> Semantic/master
   margin: 1em auto;
 }
 .ui.fullscreen.modal > .header {

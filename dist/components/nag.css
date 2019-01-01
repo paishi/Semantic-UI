@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Nag
-=======
  * # Semantic UI 2.4.2 - Nag
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *

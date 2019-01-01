@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Dimmer
-=======
  * # Semantic UI 2.4.2 - Dimmer
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -120,8 +116,6 @@
 
 
 /*--------------
-<<<<<<< HEAD
-=======
     Legacy
 ---------------*/
 
@@ -134,7 +128,21 @@
 }
 
 /*--------------
->>>>>>> Semantic/master
+    Alignment
+---------------*/
+
+.ui[class*="top aligned"].dimmer {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.ui[class*="bottom aligned"].dimmer {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/*--------------
     Alignment
 ---------------*/
 

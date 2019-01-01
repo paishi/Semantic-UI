@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Site
-=======
  * # Semantic UI 2.4.2 - Site
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *

@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Rating
-=======
  * # Semantic UI 2.4.2 - Rating
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *

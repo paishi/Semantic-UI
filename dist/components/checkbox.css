@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Checkbox
-=======
  * # Semantic UI 2.4.2 - Checkbox
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *

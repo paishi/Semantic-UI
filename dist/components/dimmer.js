@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Dimmer
-=======
  * # Semantic UI 2.4.2 - Dimmer
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -250,13 +246,9 @@ $.fn.dimmer = function(parameters) {
               }
               $dimmer
                 .transition({
-<<<<<<< HEAD
-                  displayType : 'flex',
-=======
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
->>>>>>> Semantic/master
                   animation   : settings.transition + ' in',
                   queue       : false,
                   duration    : module.get.duration(),
@@ -301,13 +293,9 @@ $.fn.dimmer = function(parameters) {
               module.verbose('Hiding dimmer with css');
               $dimmer
                 .transition({
-<<<<<<< HEAD
-                  displayType : 'flex',
-=======
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
->>>>>>> Semantic/master
                   animation   : settings.transition + ' out',
                   queue       : false,
                   duration    : module.get.duration(),

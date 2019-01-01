@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Modal
-=======
  * # Semantic UI 2.4.2 - Modal
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -114,12 +110,7 @@ $.fn.modal = function(parameters) {
                 debug      : settings.debug,
                 variation  : settings.centered
                   ? false
-<<<<<<< HEAD
-                  : 'top aligned'
-                ,
-=======
                   : 'top aligned',
->>>>>>> Semantic/master
                 dimmerName : 'modals'
               },
               dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
@@ -350,8 +341,6 @@ $.fn.modal = function(parameters) {
           if( module.is.animating() || !module.is.active() ) {
             module.showDimmer();
             module.cacheSizes();
-<<<<<<< HEAD
-=======
             if(module.can.useFlex()) {
               module.remove.legacy();
             }
@@ -360,7 +349,6 @@ $.fn.modal = function(parameters) {
               module.set.modalOffset();
               module.debug('Using non-flex legacy modal positioning.');
             }
->>>>>>> Semantic/master
             module.set.screenHeight();
             module.set.type();
             module.set.clickaway();
@@ -558,13 +546,10 @@ $.fn.modal = function(parameters) {
             $dimmer
               .off('click' + elementEventNamespace)
             ;
-<<<<<<< HEAD
-=======
           },
           dimmerStyles: function() {
             $dimmer.removeClass(className.inverted);
             $dimmable.removeClass(className.blurring);
->>>>>>> Semantic/master
           },
           bodyStyle: function() {
             if($body.attr('style') === '') {
@@ -691,17 +676,10 @@ $.fn.modal = function(parameters) {
                 debug      : settings.debug,
                 dimmerName : 'modals',
                 closable   : 'auto',
-<<<<<<< HEAD
-                variation  : settings.centered
-                  ? false
-                  : 'top aligned'
-                ,
-=======
                 useFlex    : module.can.useFlex(),
                 variation  : settings.centered
                   ? false
                   : 'top aligned',
->>>>>>> Semantic/master
                 duration   : {
                   show     : settings.duration,
                   hide     : settings.duration

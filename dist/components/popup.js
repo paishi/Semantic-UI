@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Popup
-=======
  * # Semantic UI 2.4.2 - Popup
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1077,11 +1073,7 @@ $.fn.popup = function(parameters) {
         should: {
           centerArrow: function(calculations) {
             return !module.is.basic() && calculations.target.width <= (settings.arrowPixelsFromEdge * 2);
-<<<<<<< HEAD
-          }
-=======
           },
->>>>>>> Semantic/master
         },
 
         is: {

@@ -1914,13 +1914,8 @@ Floated Menu / Item
   bottom: 0px;
   border-radius: 0px;
   margin: 0em -1px;
-<<<<<<< HEAD
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
-=======
   width: calc(100% - (-1px * 2));
   max-width: calc(100% - (-1px * 2));
->>>>>>> Semantic/master
   -webkit-box-shadow: none;
           box-shadow: none;
 }

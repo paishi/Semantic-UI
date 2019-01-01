@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * # Semantic UI 2.3.0 - Dropdown
-=======
  * # Semantic UI 2.4.2 - Dropdown
->>>>>>> Semantic/master
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2619,11 +2615,7 @@ $.fn.dropdown = function(parameters) {
             ;
             $label = settings.onLabelCreate.call($label, escapedValue, text);
 
-<<<<<<< HEAD
-            if(module.has.value(value)) {
-=======
             if(module.has.label(value)) {
->>>>>>> Semantic/master
               module.debug('User selection already exists, skipping', escapedValue);
               return;
             }
